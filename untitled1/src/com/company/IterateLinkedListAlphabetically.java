@@ -3,16 +3,19 @@ package com.company;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
+import java.util.Scanner;
 
 public class IterateLinkedListAlphabetically {
         public static void main(String[] args) {
                 LinkedList<String> placesToVisit = new LinkedList<String>();
 
-                addInOrder(placesToVisit, "Amsterdam");
+                addInOrder(placesToVisit, "Amsterdam");//examples
                 addInOrder(placesToVisit, "Denmark");
                 addInOrder(placesToVisit, "Uruguay");
                 addInOrder(placesToVisit, "Belgium");
                 addInOrder(placesToVisit, "Dubai");
+                addInOrder(placesToVisit, "America");
+                addInOrder(placesToVisit, "America");
 
                 printList(placesToVisit);
                 System.out.println(placesToVisit.size());
@@ -30,16 +33,15 @@ public class IterateLinkedListAlphabetically {
 
         private static boolean addInOrder(LinkedList<String> linkedList, String newCity)
         {
-                ListIterator<String>stringListIterator = linkedList.listIterator();
+                ListIterator<String>stringListIterator = linkedList.listIterator();     //initializes the ListIterator to run through the LinkedList
 
-                while (stringListIterator.hasNext()) {
-                        int comparison = stringListIterator.next().compareTo(newCity);
-                        if (comparison == 0)
+                while (stringListIterator.hasNext()) {                                  //while the newly created list has a next index, continue
+                        int comparison = stringListIterator.next().compareTo(newCity);  //compares the numerical value returned from next() and newCity. Whichever one is higher is valued 1 the other 0.
+                        if (comparison == 0)                                            //if the two inputs compared = 0 then the inputs are identical.
                         {
-                                System.out.println("fail");
+                                System.out.println(newCity + " is already in the list");
                                 return false;
                         } else if (comparison > 0) {
-                                //newCIty  will appear before this one
                                 stringListIterator.previous();
                                 stringListIterator.add(newCity);
                                 return true;
@@ -50,6 +52,11 @@ public class IterateLinkedListAlphabetically {
                 stringListIterator.add(newCity);
                 return true;
         }
+        private static void visit (LinkedList cities)
+        {
+                Scanner scanner = new Scanner(System.in);
+                boolean quit = false;
 
-
+                ListIterator<String>listIterator = cities.listIterator();
+        }
 }
